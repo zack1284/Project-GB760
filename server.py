@@ -6,7 +6,6 @@ import argparse
 import ast
 
 # To set your environment variables in your terminal run the following line:
-#export BEARER_TOKEN='AAAAAAAAAAAAAAAAAAAAAKVkVAEAAAAAUnzDwyYuL6V%2BUB4%2FOc%2BsJBHo%2BL0%3DPy1K9NUa4V3W8KU9vruHBcMwYN8k7gE855Hkpt4J2mDe3i5Ak5'
 bearer_token = os.environ.get("BEARER_TOKEN")
 
 
