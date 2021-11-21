@@ -12,9 +12,6 @@ python server.py
 The code:
 python server.py --filename=temp.json
 
-You should following message if success:
-Successfully write into tweets.txt
-
 4. Compute frequencies of words and phrases. 
 The code below would generate the frequency of the word important.
 Example code:
