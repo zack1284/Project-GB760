@@ -32,9 +32,23 @@ def clean_text(text):
                            and (not token.like_url)
                            and (not token.lemma_ == "-PRON-")
                            and (not len(token) < 4)])
+   doc = ''.join([i for i in doc if not i.isdigit()])
+   doc = remove_prefix(doc,'@') 
+   doc = remove_symbol(doc,['@','.','[',']','{','}','(',')','!','#','$','%','^','*','+','/','|','-','<','>','?','_','~','`',':','"',';']) #remove all symbols in list
+
    return doc
 
-
+def remove_prefix(text, prefix):
+    if text.startswith(prefix):
+        return text[len(prefix):]
+    return text  # or whatever
+def remove_symbol(doc,list_s):
+    for i in range(len(list_s)):
+        filter(lambda x:x[0]!=list_s[i], doc.split())
+        doc = " ".join(filter(lambda x:x[0]!=list_s[i],doc.split()))
+    
+    return doc
+	
 def create_url():
     return "https://api.twitter.com/2/tweets/sample/stream?tweet.fields=created_at,lang"
 
@@ -69,11 +83,11 @@ def connect_to_endpoint(url):
              date_object = datetime.strptime(created_at,'%Y-%m-%dT%H:%M:%S.%fZ')
              date = date_object.strftime("%Y-%m-%d-%H-%M-%S")
              output = str(date) + " " + text
-             fileObject = open("tweet.txt", "a")
+             fileObject = open("tweets.txt", "a")
              fileObject.write(output + "\n")
              fileObject.close()
              #print(output)
-        print("Writing tweets to tweet.txt... Press ctrl+C to end...")
+        print("Writing tweets to tweets.txt... Press ctrl+C to end...")
      except ValueError:
          print("error! Might need to export your bearer token!")
 
@@ -87,7 +101,7 @@ def read_file(file):
      date_object = datetime.strptime(created_at,'%Y-%m-%dT%H:%M:%S.%fZ')
      date = date_object.strftime("%Y-%m-%d-%H-%M-%S")
      output = str(date) + " " + text
-     fileObject = open("tweet.txt", "a")
+     fileObject = open("tweets.txt", "a")
      fileObject.write(output + "\n")
      fileObject.close()
      
