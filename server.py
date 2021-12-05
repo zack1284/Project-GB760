@@ -58,12 +58,10 @@ def connect_to_endpoint(url):
         )
         
     for response_line in response.iter_lines():
+     try:
         if response_line:
-         try:
             json_response = json.loads(response_line)
             json_data = json_response["data"]
-         except ValueError:
-            print("You might need to set your bearer token")
          
             if json_data["lang"] == "en":
              created_at = json_data["created_at"]
@@ -76,7 +74,8 @@ def connect_to_endpoint(url):
              fileObject.close()
              #print(output)
         print("Writing tweets to tweet.txt... Press ctrl+C to end...")
-
+     except ValueError:
+         print("error! Might need to export your bearer token!")
 
 
 
