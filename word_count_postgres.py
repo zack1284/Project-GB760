@@ -7,7 +7,7 @@ def now_local_time():
     return(now_time)
 
 def now_local_sec():
-    now_sec = time.strftime("%S", time.localtime()) 
+    now_sec = int(time.strftime("%S", time.localtime()))
     return(now_sec)
 
 def main():
@@ -21,7 +21,7 @@ def main():
     args = parser.parse_args()
 
     # connect to database
-    conn=psycopg2.connect("dbname=milestone2 user=postgres password=123456 port=5432 ")  #, password="123456", host="localhost", port="5432"
+    conn=psycopg2.connect("dbname=milestone2 user=gb760")  #user=postgre password="123456", host="localhost", port="5432"
     cur=conn.cursor()
 
     # write query to calculate
