@@ -14,7 +14,7 @@ file_tweet_word = re.sub(r'[0-9]*','',file_tweet)
 file_tweet_word = re.sub(r'[/]*','',file_tweet_word)
 file_tweet_word = re.sub(r'[-]*','',file_tweet_word)
 lines = file_tweet_word.splitlines()
-lines.remove('')
+#lines.remove('')
 
 # list of unique cur_time
 lines_time = file_tweet.splitlines()
