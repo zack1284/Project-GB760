@@ -25,3 +25,9 @@ python vocabulary_size.py
 THe code:
 gedit FAILURE.md 
 
+Milestone 2:
+
+e. Compute the trendiness of a phrase:
+The code:
+python trendiness_postgres.py --phrase import_phrase
+
