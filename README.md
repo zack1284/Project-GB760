@@ -1,8 +1,10 @@
 Instructions:
 
+**Milestone 1**
+
 1. export token
 The code:
-export BEARER_TOKEN='Your token'
+export BEARER_TOKEN='AAAAAAAAAAAAAAAAAAAAAPYSVwEAAAAAlQz3JZp8dDAJGNrSNPkUSNws7ts%3DRdxEiF5HftFmX89Ud6JULz1nGUJJuEd0OXUGbD5jI4aBgu254E'
 
 2. Read Tweets and write it to tweets.txt. 
 The code:
@@ -24,4 +26,29 @@ python vocabulary_size.py
 6. Access FAILURE.md
 THe code:
 gedit FAILURE.md 
+
+**Milestone 2**
+
+a. Read the SQL file and create the database
+
+b. Read Tweets and write it to tweets.txt. 
+The code:
+python server.py
+
+Read tweets from a json file and write it to database
+The code:
+python server.py --filename=temp.json
+
+c.Compute frequencies of words and phrases in the current minute
+The code:
+python trendiness_postgres.py --phrase import_phrase
+
+d.Compute the number of unique words in the current minute
+python vocabulary_size_postgres.py 
+
+e. Compute the trendiness of a phrase:
+The code:
+python trendiness_postgres.py --phrase import_phrase
+
+
 
