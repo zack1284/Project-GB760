@@ -187,7 +187,7 @@ for set_num in range(len(phrase)):
 
 
 # create the connection
-conn=psycopg2.connect("dbname=milestone2 user=postgres password=123456 port=5432")  #dbname=milestone2 user=postgres password=123456 port=5432 #dbname=milestone2 user=gb760
+conn=psycopg2.connect("dbname=milestone2 user=gb760")  #dbname=milestone2 user=postgres password=123456 port=5432 #dbname=milestone2 user=gb760
 cur=conn.cursor()  
 # insert the data into the table PHRASE
 
