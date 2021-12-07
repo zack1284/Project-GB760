@@ -2,7 +2,7 @@ Instructions:
 
 1. export token
 The code:
-export BEARER_TOKEN='Your token'
+export BEARER_TOKEN='AAAAAAAAAAAAAAAAAAAAAPYSVwEAAAAAlQz3JZp8dDAJGNrSNPkUSNws7ts%3DRdxEiF5HftFmX89Ud6JULz1nGUJJuEd0OXUGbD5jI4aBgu254E'
 
 2. Read Tweets and write it to tweets.txt. 
 The code:
