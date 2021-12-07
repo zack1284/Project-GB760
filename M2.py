@@ -5,7 +5,7 @@ from nltk import ngrams
 import psycopg2
 
 # clean the data again
-open_file = open("tweet.txt")
+open_file = open("tweets.txt")
 file_tweet =open_file.read()
 
 # clean the fata for counting
