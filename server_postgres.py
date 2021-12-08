@@ -324,7 +324,7 @@ def main():
 
 
     # create the connection
-    conn=psycopg2.connect("dbname=milestone2 user=gb760 password=123456 port=5432 ")  #, password="123456", host="localhost", port="5432"
+    conn=psycopg2.connect("dbname=milestone2 user=gb760")  #, password="123456", host="localhost", port="5432"
     cur=conn.cursor()
     
     # insert the data into the table PHRASE
