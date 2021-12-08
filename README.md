@@ -50,7 +50,7 @@ python server_postgres_test.py
 
 c.Compute frequencies of words and phrases in the current minute
 The code:
-python trendiness_postgres.py --phrase import_phrase
+python word_count_postgres.py --phrase import_phrase
 
 d.Compute the number of unique words in the current minute
 python vocabulary_size_postgres.py 
