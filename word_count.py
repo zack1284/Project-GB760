@@ -2,7 +2,7 @@ import argparse
 import spacy
 import re
 
-open_file=open("tweet.txt")
+open_file=open("tweets.txt")
 file_tweet=open_file.read()
 
 

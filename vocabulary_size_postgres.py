@@ -13,4 +13,3 @@ for r in rs: print (r)
 conn.commit() 
 cur.close()
 conn.close()
-

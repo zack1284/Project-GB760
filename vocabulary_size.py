@@ -20,9 +20,9 @@ def unique_list(filename):
     return unique
 
 def count_unique():
-    unique_word = unique_list("tweet.txt")
+    unique_word = unique_list("tweets.txt")
     count = len(unique_word)
-    print(f"The file tweet.txt have {count} unique words.")
+    print(f"The file tweets.txt have {count} unique words.")
 
 if __name__ == "__main__":
     count_unique()
