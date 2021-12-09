@@ -30,18 +30,27 @@ gedit FAILURE.md
 **Milestone 2**
 
 a. Read the SQL file and create the database
+psql
+create database milestone2
+psql milestone2 < schema_postgres.sql
+
 
 b. Read Tweets and write it to tweets.txt. 
 The code:
-python server.py
+python server_postgres.py
 
 Read tweets from a json file and write it to database
 The code:
-python server.py --filename=temp.json
+python server_postgres.py --filename=temp.json
+
+Write data into database
+The code:
+python server_postgres_test.py
+
 
 c.Compute frequencies of words and phrases in the current minute
 The code:
-python trendiness_postgres.py --phrase import_phrase
+python word_count_postgres.py --phrase import_phrase
 
 d.Compute the number of unique words in the current minute
 python vocabulary_size_postgres.py 
