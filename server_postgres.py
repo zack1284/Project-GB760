@@ -121,18 +121,19 @@ def main():
     args = parser.parse_args() #print(args.filename)
    
     while args.filename == 'nofile':
-     try:
-        connect_to_endpoint(url)
-        timeout += 1
-     except KeyboardInterrupt:  
-        sys.exit(0)
+        try:
+            connect_to_endpoint(url)
+            timeout += 1
+        except KeyboardInterrupt:  
+            break
     else:
         with open(args.filename) as infile:
             read = infile.read()
             file = json.loads(read)
             read_file(file)
-
-    open_file = open("tweet.txt")
+        
+    # read the data
+    open_file = open("tweets.txt")
     file_tweet =open_file.read()
 
     # clean the fata for counting
@@ -145,18 +146,18 @@ def main():
 
     # list of unique cur_time
     lines_time = file_tweet.splitlines()
-    lines_time.remove('')
+    #lines_time.remove('')
     words_in_line = []
     for i in range(len(lines_time)):
         l = lines_time[i].split()
-    words_in_line.append(l)
+        words_in_line.append(l)
     cur_time = []
     for line in words_in_line:
         if line[0] in cur_time:
             continue
         else:
             cur_time.append(str(line[0]))
-        
+
     # split the unique time
     # split the time
     split_unique_time = []
@@ -168,11 +169,6 @@ def main():
         date = words_in_line[j][0]
         split = date.split('-')
         split_time.append(split)
-
-    cur_second = []
-
-
-    ### get the variable lists in table 'Time'
 
     # list of V_cur_min
     # list of total_cur_min_num_phrase
@@ -205,8 +201,8 @@ def main():
                     count_unique += 0
                     count += 0
 
-    V_cur_min.append(count_unique)
-    total_cur_min_num_phrase.append(count)
+        V_cur_min.append(count_unique)
+        total_cur_min_num_phrase.append(count)
 
     # list of V_prior_min
     # list of total_prior_min_num_phrase
@@ -239,13 +235,9 @@ def main():
                     count_unique += 0
                     count += 0
 
-    V_prior_min.append(count_unique)
-    total_prior_min_num_phrase.append(count)
+        V_prior_min.append(count_unique)
+        total_prior_min_num_phrase.append(count)
 
-
-    ### get the list of variables in the table 'Phrases'
-
-    # list of unique sets of phrase and time
     # list of unique sets of phrase and time
     phrase = []
     len_word = []
@@ -292,14 +284,13 @@ def main():
         for line_num in range(len(lines)):
             if split_time[line_num][2] != split_set_time[set_num][2] or split_time[line_num][3] != split_set_time[set_num][3] or int(split_time[line_num][4]) + 1 != int(split_set_time[set_num][4]):
                 continue
-            else:
-                phr = phrase[set_num][1]
-                count = lines[line_num].count(phr)
-                p = p + count
+        else:
+            phr = phrase[set_num][1]
+            count = lines[line_num].count(phr)
+            p = p + count
         num_prior_min_p.append(p)
 
-
-    # list cur_sec in part C
+    # get the current second for part C
     cur_sec = []
     split_time_phrase = []
     for j in range(len(phrase)):
@@ -324,17 +315,16 @@ def main():
 
 
     # create the connection
-    conn=psycopg2.connect("dbname=milestone2 user=postgres password=123456 port=5432 ")  #, password="123456", host="localhost", port="5432"
-    cur=conn.cursor()
-    
+    conn=psycopg2.connect("dbname=milestone2 user=gb760")  #dbname=milestone2 user=postgres password=123456 port=5432 #dbname=milestone2 user=gb760
+    cur=conn.cursor()  
     # insert the data into the table PHRASE
 
     cur.execute('''
-    DROP TABLE phrases
+    DROP TABLE if EXISTS phrases
     ''')
 
     cur.execute('''
-    DROP TABLE time
+    DROP TABLE if EXISTS time
     ''')
 
     cur.execute('''
@@ -362,15 +352,15 @@ def main():
     ''')
 
     for i in range(len(phrase)):
-        cur.execute('INSERT INTO PHRASES(phrase, cur_time, cur_sec, len_word, num_now_min_p, num_cur_min_p, num_prior_min_p)'+'VALUES(%s, %s,%s, %s, %s, %s, %s)' , (phrase[i][0],phrase[i][1], cur_sec[i], len_word[i], num_now_min_p[i], num_cur_min_p[i], num_prior_min_p[i]))
-    
+        cur.execute('INSERT INTO PHRASES(phrase, cur_time, cur_sec, len_word, num_now_min_p, num_cur_min_p, num_prior_min_p)'+'VALUES(%s, %s,%s, %s, %s, %s, %s)' , (phrase[i][1],phrase[i][0], cur_sec[i], len_word[i], num_now_min_p[i], num_cur_min_p[i], num_prior_min_p[i]))
+        
     for j in range(len(cur_time)):
         cur.execute('INSERT INTO TIME(cur_time, V_cur_min, V_prior_min, total_cur_min_num_phrase, total_prior_min_num_phrase)'+' VALUES(%s, %s, %s, %s, %s)' , (cur_time[j], V_cur_min[j], V_prior_min[j], total_cur_min_num_phrase[j], total_prior_min_num_phrase[j]))
 
     conn.commit() 
     cur.close()
     conn.close()
-
+    print('data alreay stored into database milestone2')
 
 if __name__ == "__main__":
     main()
