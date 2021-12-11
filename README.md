@@ -30,14 +30,13 @@ gedit FAILURE.md
 **Milestone 2**
 
 a. Read the SQL file and create the database
-```
+
 psql  
 create database milestone2  
 \q
-```
-```
+
 psql milestone2 < schema_postgres.sql
-```
+
 
 b. 
 - export token The code: export BEARER_TOKEN='AAAAAAAAAAAAAAAAAAAAAPYSVwEAAAAAlQz3JZp8dDAJGNrSNPkUSNws7ts%3DRdxEiF5HftFmX89Ud6JULz1nGUJJuEd0OXUGbD5jI4aBgu254E'
