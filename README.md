@@ -42,10 +42,12 @@ b.
 - export token The code: export BEARER_TOKEN='AAAAAAAAAAAAAAAAAAAAAPYSVwEAAAAAlQz3JZp8dDAJGNrSNPkUSNws7ts%3DRdxEiF5HftFmX89Ud6JULz1nGUJJuEd0OXUGbD5jI4aBgu254E'
 
 - Read Tweets and write it to database. 
+(need to run server_postgres.py for more than 2 min to get enough data for calculating the trendiness score)  
+- Read Tweets and write it to database  
 The code:
 python server_postgres.py
 
-- Read tweets from a json file and write it to database
+- Read tweets from a json file and write it to database  
 The code:
 python server_postgres.py --filename=temp.json
 
