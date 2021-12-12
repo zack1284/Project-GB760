@@ -1,6 +1,7 @@
 import time
 import psycopg2
 import argparse
+import pandas as pd
 
 def now_local_time():
     now_time = str(time.strftime("%H-%M", time.localtime()))
@@ -21,12 +22,12 @@ def main():
     args = parser.parse_args()
 
     # connect to database
-    conn=psycopg2.connect("dbname=milestone2 user=gb760")  #user=postgre password="123456", host="localhost", port="5432"
+    conn=psycopg2.connect("dbname=milestone2 user=postgres password=123456 port=5432") ## user=gb760" user=postgre password="123456", host="localhost", port="5432"
     cur=conn.cursor()
 
     # write query to calculate
     query = f'''
-    SELECT num_now_min_p
+    SELECT num_now_min_p AS frequencies_of_words_and_phrases
     FROM phrases
     WHERE phrase = '{args.phrase}' AND cur_time LIKE '%{now_time}%' and cur_sec <= {now_sec}
     '''
@@ -35,13 +36,12 @@ def main():
 
     conn.commit() 
     cur.close()
-    conn.close()
 
     # pinrt the outcome
     if outcome == None:
         print(0)
     else:
-        print(outcome)
+        print(pd.read_sql(query,conn))
 
 if __name__ == "__main__":
     main()
