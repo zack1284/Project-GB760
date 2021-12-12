@@ -224,7 +224,7 @@ PRIMARY KEY(cur_time)
 ''')
 
 for i in range(len(phrase)):
-    cur.execute('INSERT INTO PHRASES(phrase, cur_time, cur_sec, len_word, num_now_min_p, num_cur_min_p, num_prior_min_p)'+'VALUES(%s, %s,%s, %s, %s, %s, %s)' , (phrase[i][0],phrase[i][1], cur_sec[i], len_word[i], num_now_min_p[i], num_cur_min_p[i], num_prior_min_p[i]))
+    cur.execute('INSERT INTO PHRASES(phrase, cur_time, cur_sec, len_word, num_now_min_p, num_cur_min_p, num_prior_min_p)'+'VALUES(%s, %s,%s, %s, %s, %s, %s)' , (phrase[i][1],phrase[i][0], cur_sec[i], len_word[i], num_now_min_p[i], num_cur_min_p[i], num_prior_min_p[i]))
     
 for j in range(len(cur_time)):
     cur.execute('INSERT INTO TIME(cur_time, V_cur_min, V_prior_min, total_cur_min_num_phrase, total_prior_min_num_phrase)'+' VALUES(%s, %s, %s, %s, %s)' , (cur_time[j], V_cur_min[j], V_prior_min[j], total_cur_min_num_phrase[j], total_prior_min_num_phrase[j]))

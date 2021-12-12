@@ -6,7 +6,7 @@ parser = argparse.ArgumentParser(description='word count')
 parser.add_argument('--phrase',type=str)
 args = parser.parse_args()
 
-conn = psycopg2.connect("dbname=milestone2 user=postgres password=123456 port=5432")  #, password="123456", host="localhost", port="5432"
+conn = psycopg2.connect("dbname=milestone2 user=gb760")  #, password="123456", host="localhost", port="5432"
 cur=conn.cursor()
 
 sql = f'''
