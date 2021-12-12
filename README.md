@@ -45,7 +45,7 @@ b.
 (need to run server_postgres.py for more than 2 min to get enough data for calculating the trendiness score)  
 - Read Tweets and write it to database  
 The code:
-python server_postgres.py
+python server_postgres_test.py
 
 - Read tweets from a json file and write it to database  
 The code:
@@ -63,5 +63,8 @@ e. Compute the trendiness of a phrase:
 The code:
 python trendiness_postgres.py --phrase import_phrase
 
+- Note: For files that need access to database, you might need to modify "user" to align with your database username.
+The code:
+conn=psycopg2.connect("dbname=milestone2 user=gb760 password=123456 port=5432") 
 
 
