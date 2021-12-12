@@ -22,7 +22,7 @@ def main():
     args = parser.parse_args()
 
     # connect to database
-    conn=psycopg2.connect("dbname=milestone2 user=postgres password=123456 port=5432") ## user=gb760" user=postgre password="123456", host="localhost", port="5432"
+    conn=psycopg2.connect("dbname=milestone2 user=gb760 password=123456 port=5432") ## user=gb760" user=postgre password="123456", host="localhost", port="5432"
     cur=conn.cursor()
 
     # write query to calculate
